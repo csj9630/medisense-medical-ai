@@ -1,0 +1,5 @@
+-r requirements.txt
+
+# Schema 역생성 등 개발/협업 전용 도구
+sqlacodegen>=3.0,<4.0
+

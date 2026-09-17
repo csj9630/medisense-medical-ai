@@ -1,0 +1,24 @@
+# Secret와 Git/IDE 메타데이터는 Build Context에 포함하지 않습니다.
+.git
+.env
+**/.env
+.vscode
+
+# 로컬 가상환경, 캐시와 Build 산출물을 제외합니다.
+**/.venv*
+**/__pycache__
+**/*.py[cod]
+**/.pytest_cache
+**/local.db
+frontend/node_modules
+frontend/dist
+tmp
+output
+outputs
+
+# Backend Runtime Image에서 사용하지 않는 개발 자료입니다.
+docs
+frontend
+scripts
+tests
+backend/tests

@@ -1,0 +1,20 @@
+fastapi>=0.116,<1.0
+uvicorn>=0.35,<1.0
+sqlalchemy>=2.0,<3.0
+pydantic-settings>=2.10,<3.0
+psycopg[binary]>=3.2,<4.0
+alembic>=1.16,<2.0
+pgvector>=0.4,<1.0
+email-validator>=2.2,<3.0
+pwdlib[argon2]>=0.3,<1.0
+PyJWT>=2.10,<3.0
+boto3>=1.40,<2.0
+python-multipart>=0.0.20,<1.0
+google-genai>=1.0,<3.0  # OCR Chunk Gemini Embedding 전용
+
+# Image/PDF/DOCX/PPTX 공통 OCR 의존성의 단일 기준 파일입니다.
+# PaddleOCR가 무거우므로 리소스 제약 배포 환경에서는 별도 Worker도 고려합니다.
+-r ../ai/ocr/requirements.txt
+
+# Vast.ai 원격 LLM Provider의 HTTP 의존성입니다.
+-r ../ai/llm/requirements-api.txt

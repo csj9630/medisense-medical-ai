@@ -1,0 +1,54 @@
+.auth-page { min-height: 100%; display: grid; place-items: center; overflow-y: auto; padding: 64px 24px 32px; background: #f7f6f2; }
+.auth-card { width: min(100%, 420px); padding: 36px; background: white; border: 1px solid #ddd9cf; border-radius: 18px; box-shadow: 0 14px 40px rgba(30, 28, 22, .07); }
+.auth-brand { display: flex; align-items: center; gap: 8px; margin: 0 0 24px; font-weight: 800; }
+.auth-brand img { height: 28px; width: 28px; }
+.auth-card h1 { margin: 0 0 10px; font-size: 28px; }
+.auth-description { margin: 0 0 28px; color: #777166; line-height: 1.6; }
+.auth-form { display: grid; gap: 16px; }
+.auth-field { display: grid; gap: 7px; }
+.auth-field label { font-size: 14px; font-weight: 700; }
+.auth-field input { min-height: 46px; padding: 0 13px; border: 1px solid #d8d3c9; border-radius: 10px; font: inherit; }
+.auth-button { min-height: 46px; border: 0; border-radius: 10px; color: white; background: #1d7a72; font-weight: 700; cursor: pointer; }
+.auth-button:disabled { opacity: .55; cursor: wait; }
+.auth-links { margin-top: 20px; text-align: center; color: #686258; }
+.auth-links a, .text-button { color: #126a63; font-weight: 700; }
+.password-help { margin-top: -7px; text-align: right; font-size: 13px; }
+.password-help a, .auth-options a { color: #686258; }
+.auth-options { margin-top: -7px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
+.remember-me { display: flex; align-items: center; gap: 6px; color: #686258; cursor: pointer; }
+.remember-me input { margin: 0; }
+.text-button { border: 0; padding: 0; background: none; cursor: pointer; }
+.form-error { margin: 0; color: #c43c35; font-size: 14px; }
+.form-notice { margin: 0; padding: 12px; color: #27615b; background: #eaf6f4; border-radius: 8px; font-size: 14px; }
+.dev-reset-link { padding: 12px; color: #126a63; background: #fff8db; border-radius: 8px; font-size: 14px; font-weight: 700; text-align: center; }
+
+.oauth-section { margin-top: 20px; display: grid; gap: 10px; }
+.oauth-divider { position: relative; text-align: center; margin: 4px 0 6px; color: #a39c8f; font-size: 13px; }
+.oauth-divider::before { content: ""; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: #e4dfd3; }
+.oauth-divider span { position: relative; padding: 0 10px; background: white; }
+.oauth-button {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 46px; border-radius: 10px; font-weight: 700; text-decoration: none;
+  border: 1px solid #d8d3c9; color: #2b2820; background: white;
+}
+.oauth-button:hover { background: #f7f6f2; }
+.oauth-github { background: #24292f; border-color: #24292f; color: white; }
+.oauth-github:hover { background: #1b1f24; }
+.oauth-in-app-warning {
+  display: grid; gap: 8px; padding: 12px; border-radius: 8px;
+  background: #fff8db; color: #6b5b06; font-size: 13px; line-height: 1.5;
+}
+.oauth-in-app-warning .text-button { justify-self: start; }
+
+/* 인증 화면도 사이드바의 다크모드와 같은 색상 체계를 사용합니다. */
+.dark .auth-page { background: #0a0a0a; }
+.dark .auth-card { color: #f5f5f5; background: #171717; border-color: #404040; box-shadow: none; }
+.dark .auth-description, .dark .auth-links, .dark .password-help a, .dark .auth-options a, .dark .remember-me { color: #a3a3a3; }
+.dark .auth-field input { color: #f5f5f5; background: #262626; border-color: #525252; }
+.dark .form-notice { color: #a7f3d0; background: #13332d; }
+.dark .oauth-divider span { background: #171717; }
+.dark .oauth-divider { color: #737373; }
+.dark .oauth-divider::before { background: #404040; }
+.dark .oauth-button { color: #f5f5f5; background: #262626; border-color: #525252; }
+.dark .oauth-button:hover { background: #333; }
+.dark .oauth-in-app-warning { background: #332b06; color: #fde68a; }

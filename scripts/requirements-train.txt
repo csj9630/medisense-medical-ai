@@ -1,0 +1,17 @@
+# scripts/train_medgemma_lora.ipynb 가 Colab 셀에서 설치하는 패키지 목록.
+# 노트북은 Colab에서 %pip install로 직접 설치하므로 이 파일은 참고/재현용입니다.
+#
+# numpy는 일부러 버전을 안 적습니다 — Colab 기본 이미지의 numpy(2.x)를 그대로 씁니다.
+# 예전에 numpy<2로 강제 고정했다가 opencv/jax/cupy/shap/cudf 등 numpy>=2를 요구하는
+# Colab 사전 설치 패키지들과 충돌해서 numpy ABI 에러가 재발했던 적이 있습니다.
+#
+# trl도 버전을 안 고정합니다 — trl과 transformers가 서로 다른 시점 버전이면
+# (예: trl만 오래된 버전) SFTConfig 인자 이름(max_seq_length/max_length)이나
+# Trainer 인자 이름(tokenizer/processing_class)이 안 맞아서 깨집니다. 항상 같이 설치.
+transformers>=4.44
+accelerate>=0.33
+peft>=0.12
+bitsandbytes>=0.43
+trl
+datasets>=2.20
+huggingface_hub>=0.24

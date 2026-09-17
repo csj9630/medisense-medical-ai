@@ -1,0 +1,34 @@
+meta {
+  name: 02 Signup
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/auth/signup
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "test@example.com",
+    "password": "password1234"
+  }
+}
+
+script:post-response {
+  if (res.body.dev_verification_code) {
+    bru.setEnvVar("verificationCode", res.body.dev_verification_code);
+  }
+}
+
+docs {
+  실제 로그인 계정을 만들 때 사용하세요 (게스트만 테스트할 거면 건너뛰어도 됩니다).
+
+  SMTP를 설정하지 않은 로컬 환경에서는 응답에 dev_verification_code가 그대로
+  포함되고, 자동으로 verificationCode 변수에 저장됩니다 — 바로 다음 "Verify Email"
+  요청에서 씁니다.
+
+  email은 매번 새 값으로 바꿔야 합니다 (이미 가입된 이메일이면 409 에러).
+}

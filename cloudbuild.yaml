@@ -1,0 +1,41 @@
+substitutions:
+  _REGION: asia-northeast3
+  _REPOSITORY: cloud-run-source-deploy
+  _IMAGE: backend
+  _SERVICE: the-gpt-dev
+
+steps:
+  # 1. Docker 이미지 빌드
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - build
+      - -f
+      - backend/dockerfile
+      - -t
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:$COMMIT_SHA'
+      - .
+
+  # 2. Artifact Registry에 이미지 업로드
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - push
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:$COMMIT_SHA'
+
+  # 3. Cloud Run에 배포
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - '${_SERVICE}'
+      - --image
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:$COMMIT_SHA'
+      - --region
+      - '${_REGION}'
+      - --platform
+      - managed
+      - --allow-unauthenticated
+      - --quiet
+
+options:
+  logging: CLOUD_LOGGING_ONLY

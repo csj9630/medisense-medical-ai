@@ -1,0 +1,28 @@
+meta {
+  name: 04 Resend Verification
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/auth/resend-verification
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "test@example.com"
+  }
+}
+
+script:post-response {
+  if (res.body.dev_verification_code) {
+    bru.setEnvVar("verificationCode", res.body.dev_verification_code);
+  }
+}
+
+docs {
+  인증 코드가 만료됐거나 다시 받고 싶을 때 사용하세요. 로컬 환경이면 새 코드가
+  verificationCode 변수에 다시 자동 저장됩니다.
+}

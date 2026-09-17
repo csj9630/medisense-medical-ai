@@ -1,0 +1,23 @@
+meta {
+  name: 01 Guest Session (로그인 없이 시작)
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/auth/guest
+  body: none
+  auth: none
+}
+
+script:post-response {
+  bru.setEnvVar("token", res.body.access_token);
+}
+
+docs {
+  로그인 계정 없이 채팅 API부터 테스트하고 싶을 때 제일 먼저 실행하세요.
+
+  응답의 access_token이 환경변수 token에 자동 저장됩니다. 이후
+  Conversations 폴더의 모든 요청은 이 token을 그대로 쓰므로 따로 복사/붙여넣기 할
+  필요가 없어요.
+}

@@ -1,0 +1,13 @@
+paddlepaddle>=3.3,<3.4
+paddleocr>=3.7,<3.8
+# PaddleX 3.7은 cv2 import뿐 아니라 opencv-contrib-python 배포판 이름도
+# 검사한다. headless로 대체하면 OCR 초기화가 거부되므로 이 wheel 하나를
+# 사용하고 Linux 이미지에는 필요한 공유 라이브러리를 설치한다.
+opencv-contrib-python==4.10.0.84
+numpy>=2.0,<2.4
+Pillow>=11.0,<13.0
+PyMuPDF>=1.26,<1.29
+pymupdf4llm>=0.3,<0.4
+python-docx>=1.2,<2.0
+python-pptx>=1.0,<2.0
+lxml>=5.0,<7.0

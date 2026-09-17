@@ -1,0 +1,9 @@
+.profile-image-control { display: grid; gap: 6px; }
+.profile-image-button { position: relative; width: 72px; height: 72px; display: grid; place-items: center; padding: 0; color: var(--mypage-muted); background: var(--mypage-field-bg); border: 1px dashed var(--mypage-border); border-radius: 14px; cursor: pointer; overflow: hidden; }
+.profile-image-button img { width: 100%; height: 100%; object-fit: cover; }
+.profile-image-button:disabled { opacity: .6; cursor: wait; }
+.profile-camera { position: absolute; right: 4px; bottom: 4px; display: grid; place-items: center; width: 23px; height: 23px; color: white; background: #1d7a72; border: 2px solid var(--mypage-button-bg); border-radius: 50%; }
+.profile-file-input { display: none; }
+.profile-upload-message, .profile-upload-error { max-width: 130px; font-size: 11px; }
+.profile-upload-message { color: var(--mypage-muted); }
+.profile-upload-error { color: #dc2626; }

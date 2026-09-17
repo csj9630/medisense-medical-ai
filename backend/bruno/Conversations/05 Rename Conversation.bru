@@ -1,0 +1,21 @@
+meta {
+  name: 05 Rename Conversation
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{baseUrl}}/conversations/{{conversationId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "title": "두통 문의"
+  }
+}

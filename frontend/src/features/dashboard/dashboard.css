@@ -1,0 +1,135 @@
+/* admin.css의 --admin-* 토큰(패널/테두리/텍스트 등)은 .admin-page에서 이미
+   정의돼 있어서 그대로 재사용한다. 여기서는 차트 전용 색상 토큰만 추가한다 —
+   dataviz 스킬 기본 팔레트(색약 안전성 검증 통과)를 그대로 가져왔다. */
+.dashboard-page {
+  --chart-grid: #e1e0d9;
+  --chart-axis: #c3c2b7;
+  --chart-track: #eef0ee;
+  --series-1: #2a78d6; /* blue */
+  --series-1-wash: rgb(42 120 214 / 10%);
+  --series-2: #eb6834; /* orange */
+  --status-good: #0ca30c;
+  --status-warning: #b4691e;
+  --status-critical: #d03b3b;
+}
+.dark .dashboard-page {
+  --chart-grid: #2c2c2a;
+  --chart-axis: #454d3f;
+  --chart-track: #262b24;
+  --series-1: #3987e5;
+  --series-1-wash: rgb(57 135 229 / 14%);
+  --series-2: #d95926;
+  --status-good: #0ca30c;
+  --status-warning: #e2a15a;
+  --status-critical: #e08986;
+}
+
+.dashboard-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 20px;
+  font-size: 13px;
+  color: var(--admin-muted);
+}
+
+.dashboard-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.dashboard-kpi {
+  background: var(--admin-panel);
+  border: 1px solid var(--admin-border);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+.dashboard-kpi .k-label {
+  font-size: 12.5px;
+  color: var(--admin-muted);
+  margin-bottom: 8px;
+}
+.dashboard-kpi .k-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--admin-text);
+  letter-spacing: -0.01em;
+}
+.dashboard-kpi .k-value.empty {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--admin-muted);
+}
+.dashboard-kpi .k-sub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--admin-muted);
+}
+
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.dashboard-chart-card {
+  background: var(--admin-panel);
+  border: 1px solid var(--admin-border);
+  border-radius: 14px;
+  padding: 18px 20px 14px;
+}
+.dashboard-chart-card h3 {
+  margin: 0 0 3px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--admin-text);
+}
+.dashboard-chart-card .chart-note {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: var(--admin-muted);
+}
+.dashboard-chart-card .chart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  font-size: 13px;
+  color: var(--admin-muted);
+}
+.dashboard-chart-card svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.dashboard-tooltip {
+  position: fixed;
+  pointer-events: none;
+  background: var(--admin-text);
+  color: var(--admin-panel);
+  font-size: 12px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  line-height: 1.5;
+  opacity: 0;
+  z-index: 50;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 18%);
+  white-space: nowrap;
+  transition: opacity 0.08s ease;
+}
+.dashboard-tooltip .tt-label {
+  opacity: 0.7;
+  margin-right: 6px;
+}
+.dashboard-tooltip .tt-val {
+  font-weight: 700;
+}
+
+.dashboard-hit { cursor: pointer; }
+
+@media (max-width: 900px) {
+  .dashboard-kpis { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-charts { grid-template-columns: 1fr; }
+}

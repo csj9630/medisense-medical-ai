@@ -1,0 +1,4 @@
+# 전체 LLM Lab/GPU Worker용 통합 설치 파일입니다.
+# CPU Backend는 이 파일 대신 requirements-api.txt만 설치합니다.
+-r requirements-api.txt
+-r requirements-medgemma.txt

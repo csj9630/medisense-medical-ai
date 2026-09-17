@@ -1,0 +1,43 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# PaddleX가 요구하는 OpenCV contrib wheel의 Linux 공유 라이브러리.
+# GUI 화면을 띄우지는 않지만 cv2 로딩에는 libGL/glib가 필요하다.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY backend/requirements.txt backend/requirements.txt
+COPY ai/ocr/requirements.txt ai/ocr/requirements.txt
+COPY ai/llm/requirements-api.txt ai/llm/requirements-api.txt
+
+# cv2 파일을 공유하는 다른 OpenCV wheel이 섞이지 않도록 정리한 후,
+# PaddleX의 배포판 이름 검사까지 충족하는 contrib wheel 하나만 설치한다.
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r backend/requirements.txt \
+    && pip uninstall -y \
+        opencv-python \
+        opencv-contrib-python \
+        opencv-python-headless \
+        opencv-contrib-python-headless \
+    && pip install --no-cache-dir --no-deps \
+        "$(grep '^opencv-contrib-python==' ai/ocr/requirements.txt)" \
+    && python -c "import cv2; print(cv2.__version__)"
+
+COPY backend/ .
+COPY ai/__init__.py ai/__init__.py
+COPY ai/consultation/ ai/consultation/
+COPY ai/evaluation/ ai/evaluation/
+COPY ai/ocr/ ai/ocr/
+COPY ai/llm/ ai/llm/
+COPY ai/rag/ ai/rag/
+
+# 서버 import만 성공하는 이미지가 배포되지 않도록 실제 모델 초기화와
+# 합성 이미지 추론까지 확인한다. 내려받은 모델은 이미지에 함께 보관된다.
+RUN python -m ai.ocr.check_runtime
+
+CMD ["sh", "-c", "python -m app.services.ocr_job_store && exec uvicorn app.main:app --host 0.0.0.0 --port \"${PORT:-8080}\""]

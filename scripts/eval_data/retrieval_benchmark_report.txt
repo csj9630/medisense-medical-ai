@@ -1,0 +1,55 @@
+질의 420개로 벤치마크 시작
+
+=== Jina 단독 (420개 질의 성공, 0개 실패, 919.3초) ===
+  Recall@1:    0.507
+  Recall@5:    0.983
+  Recall@10:    1.000
+  Precision@1: 0.507
+  Precision@5: 0.197
+  Precision@10: 0.100
+  nDCG@1:      0.507
+  nDCG@5:      0.761
+  nDCG@10:      0.766
+  MRR:           0.689
+  Recall@5 by source:
+    - GenMedGPT-5k-ko: 0.980 (n=300)
+    - HealthSearchQA-ko: 0.950 (n=20)
+    - snuh/ClinicalQA: 1.000 (n=100)
+
+=== BGE-M3 단독 (420개 질의 성공, 0개 실패, 837.0초) ===
+  Recall@1:    0.712
+  Recall@5:    0.874
+  Recall@10:    0.900
+  Precision@1: 0.712
+  Precision@5: 0.175
+  Precision@10: 0.090
+  nDCG@1:      0.712
+  nDCG@5:      0.796
+  nDCG@10:      0.804
+  MRR:           0.774
+  Recall@5 by source:
+    - GenMedGPT-5k-ko: 0.993 (n=300)
+    - HealthSearchQA-ko: 0.900 (n=20)
+    - snuh/ClinicalQA: 0.510 (n=100)
+
+=== RRF 결합(Jina+BGE) (420개 질의 성공, 0개 실패, 1841.0초) ===
+  Recall@1:    0.867
+  Recall@5:    0.955
+  Recall@10:    0.993
+  Precision@1: 0.867
+  Precision@5: 0.191
+  Precision@10: 0.099
+  nDCG@1:      0.867
+  nDCG@5:      0.917
+  nDCG@10:      0.929
+  MRR:           0.908
+  Recall@5 by source:
+    - GenMedGPT-5k-ko: 1.000 (n=300)
+    - HealthSearchQA-ko: 1.000 (n=20)
+    - snuh/ClinicalQA: 0.810 (n=100)
+
+=== 요약 ===
+설정                    Recall@1  Recall@5  Recall@10 MRR       
+Jina 단독               0.507     0.983     1.000     0.689     
+BGE-M3 단독             0.712     0.874     0.900     0.774     
+RRF 결합(Jina+BGE)      0.867     0.955     0.993     0.908     

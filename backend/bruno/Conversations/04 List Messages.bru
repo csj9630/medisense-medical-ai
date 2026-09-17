@@ -1,0 +1,15 @@
+meta {
+  name: 04 List Messages
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/conversations/{{conversationId}}/messages
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,0 +1,21 @@
+meta {
+  name: 08 Validate Reset Token
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/auth/validate-reset-token
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "token": "여기에 dev_reset_url에서 복사한 token 값을 붙여넣으세요"
+  }
+}
+
+docs {
+  링크를 실제로 열기 전에 토큰이 아직 유효한지만 확인하고 싶을 때 씁니다.
+}

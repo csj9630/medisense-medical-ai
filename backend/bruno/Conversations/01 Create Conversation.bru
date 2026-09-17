@@ -1,0 +1,26 @@
+meta {
+  name: 01 Create Conversation
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/conversations
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+script:post-response {
+  bru.setEnvVar("conversationId", res.body.id);
+}
+
+docs {
+  Auth 폴더에서 "Guest Session"이나 "Login"을 먼저 실행해 token을 채워두세요.
+
+  응답의 id가 conversationId 변수에 자동 저장되어, 아래 나머지 요청들이 바로
+  동작합니다.
+}

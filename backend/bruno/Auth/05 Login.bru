@@ -1,0 +1,28 @@
+meta {
+  name: 05 Login
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "test@example.com",
+    "password": "password1234"
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("token", res.body.access_token);
+}
+
+docs {
+  이메일 인증까지 끝낸 계정으로 로그인합니다. 성공하면 access_token이 token
+  변수에 자동 저장되어, 이 계정으로 Conversations 폴더 요청을 바로 테스트할 수
+  있어요 (Guest Session으로 저장된 token을 덮어씁니다).
+}

@@ -1,0 +1,8 @@
+# RAG 데이터셋 ingestion(ai/rag/ingestion/) 전용 의존성 — 일반 chunking/검색 경로는
+# 이 라이브러리들이 전혀 필요 없어서 ai/rag/requirements.txt와 분리했다(ai/requirements.txt의
+# 기존 관심사별 분리 패턴을 그대로 따름). 버전은 backend/.venv에 이미 설치돼 있던 실제
+# 버전으로 고정했다(scripts/build_embedding_eval_set.py가 먼저 설치해서 쓰고 있었음).
+datasets==5.0.1
+huggingface_hub==1.27.0
+pandas==3.0.5
+pyarrow==25.0.1

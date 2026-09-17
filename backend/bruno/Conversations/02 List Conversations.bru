@@ -1,0 +1,19 @@
+meta {
+  name: 02 List Conversations
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/conversations
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  현재 token의 주인이 가진 대화 목록 (최근 수정 순).
+}

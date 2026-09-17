@@ -1,0 +1,23 @@
+meta {
+  name: 03 Verify Email
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/auth/verify-email
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "test@example.com",
+    "code": "{{verificationCode}}"
+  }
+}
+
+docs {
+  Signup 응답에서 자동 저장된 verificationCode를 사용합니다.
+  email은 Signup에서 쓴 값과 똑같이 맞춰주세요. 성공하면 Login이 가능해집니다.
+}

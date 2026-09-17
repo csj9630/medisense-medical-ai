@@ -1,0 +1,7 @@
+# 편의용 — ai/ocr, ai/rag를 둘 다 쓰는 로컬 랩 등에서 한 번에 설치할 때 사용.
+# 실제 서비스(backend)는 필요한 쪽만 골라서 ai/ocr/requirements.txt 또는
+# ai/rag/requirements.txt를 참조하는 걸 권장 (RAG 쪽은 torch 등으로 훨씬 무거움).
+# LLM은 CPU API Provider와 GPU MedGemma 설치 목적이 달라 이 통합 파일에 넣지 않는다.
+# 필요한 Runtime에 따라 llm/requirements-api.txt 또는 llm/requirements.txt를 설치한다.
+-r ocr/requirements.txt
+-r rag/requirements.txt

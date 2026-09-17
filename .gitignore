@@ -1,0 +1,60 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Backend
+backend/.venv/
+__pycache__/
+*.py[cod]
+.env
+backend/logs/
+*.log
+
+# 로컬 단위테스트 결과서, 실행 증적 및 커버리지 산출물
+/output/
+/outputs/
+/tmp/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.pytest_cache/
+
+# 로컬 전용 AI 파이프라인 실험 (OCR/임베딩/RAG 성능테스트) — 개인 로컬에서만
+backend/local_lab/
+
+# ai/ 를 editable 설치(pip install -e ..)할 때 생기는 빌드 메타데이터
+*.egg-info/
+
+# OS
+.DS_Store
+
+# Claude Code project instructions (로컬 전용, 공유 저장소에는 올리지 않음)
+**/CLAUDE.md
+
+# 로컬 GGUF 모델 파일 (수 GB, git에 안 올림)
+ai/llm/models/
+
+# Vast.ai Notebook이 프로젝트 안에 내려받는 Hugging Face base/adapter 파일
+models/
+
+# RAG 데이터셋 로컬 전처리 산출물 (raw/processed/chunks/embeddings) - 대용량,
+# HF에서 다시 스트리밍하면 재생성 가능하므로 git에 안 올림 (scripts/rag_prepare_dataset.py 참고)
+/data/raw/
+/data/processed/
+/data/chunks/
+/data/embeddings/
+# 로컬 실행 상태(재실행 시 이어받는 dedup 진행 기록) - 로컬 전용, 커밋 안 함
+/data/_cross_dataset_dedup_index*.json
+# 실제 질병관리청 서비스키/60개 엔드포인트 목록 - 예시(.example.yaml)만 커밋, 실제 값은 로컬 전용
+data/kdca_endpoints.yaml
+bruno/KDCA-OpenAPI/environments/Local.bru
+
+# 테스트/현황 보고서 산출물 (docx/md/pdf/xlsx/pptx) - 로컬 작업용, 공유 저장소에는 올리지 않음
+/MediSense_*.docx
+/MediSense_*.md
+/MediSense_*.pdf
+/MediSense_*.xlsx
+/MediSense_*.pptx
+/통합테스트_*.md
+/통합테스트_*.xlsx

@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+/* 다크모드를 미디어쿼리가 아니라 <html class="dark">로 수동 전환하기 위한 설정 (Tailwind v4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+main {
+  padding: 40px 24px;
+}
+
+.app-header {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  border-bottom: 1px solid #ddd;
+}
+
+.app-logo { display: flex; align-items: center; gap: 8px; margin-right: 20px; color: #181713; font-size: 20px; font-weight: 800; text-decoration: none; }
+.app-logo img { height: 24px; width: 24px; }
+.app-header nav { flex: 1; display: flex; flex-wrap: wrap; gap: 16px; }
+.app-header nav a { color: #6d675e; text-decoration: none; }
+.app-header nav a.active { color: #176c64; font-weight: 700; }
+.route-loading { padding: 48px; text-align: center; }
+
+/* 채팅 입력창/메시지 영역에 쓰는 얇은 스크롤바 — 기본 브라우저 스크롤바가 두껍고
+   눈에 띄어서("못생겼다") 좀 더 튀지 않게 얇고 옅은 색으로 바꾼다. */
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 transparent;
+}
+.thin-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+.thin-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.thin-scrollbar::-webkit-scrollbar-thumb { background-color: #d4d4d4; border-radius: 999px; }
+.thin-scrollbar::-webkit-scrollbar-thumb:hover { background-color: #b5b5b5; }
+.dark .thin-scrollbar { scrollbar-color: #525252 transparent; }
+.dark .thin-scrollbar::-webkit-scrollbar-thumb { background-color: #525252; }
+.dark .thin-scrollbar::-webkit-scrollbar-thumb:hover { background-color: #6b6b6b; }
+
+/* DocumentPreviewPanel의 Word(.docx) 미리보기 - mammoth가 만들어주는 건 순수
+   <h1>/<p>/<ul>/<table> 마크업뿐이라 Tailwind 리셋 아래에선 목록 기호·표 테두리가
+   다 사라진다. 문서 구조를 알아볼 수 있는 최소한의 스타일만 되살린다. */
+.word-preview-content :is(h1, h2, h3) { font-weight: 700; margin: 0.6em 0 0.3em; }
+.word-preview-content p { margin: 0.4em 0; }
+.word-preview-content :is(ul, ol) { margin: 0.4em 0; padding-left: 1.4em; }
+.word-preview-content ul { list-style: disc; }
+.word-preview-content ol { list-style: decimal; }
+.word-preview-content table { border-collapse: collapse; margin: 0.4em 0; }
+.word-preview-content :is(th, td) { border: 1px solid #d4d4d4; padding: 4px 8px; }
+.dark .word-preview-content :is(th, td) { border-color: #525252; }

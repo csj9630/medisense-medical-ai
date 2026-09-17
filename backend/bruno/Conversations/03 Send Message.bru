@@ -1,0 +1,27 @@
+meta {
+  name: 03 Send Message
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/conversations/{{conversationId}}/messages
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "content": "두통이 계속돼요"
+  }
+}
+
+docs {
+  아직 ai/consultation이 연동되기 전이라 assistant 응답은 고정된 임시 문구로
+  옵니다. 게스트 토큰으로 호출 중이면 하루 15개 제한이 있어서, 16번째 호출부터는
+  429(게스트 한도 초과)가 정상 동작입니다.
+}

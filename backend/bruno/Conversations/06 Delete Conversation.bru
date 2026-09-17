@@ -1,0 +1,22 @@
+meta {
+  name: 06 Delete Conversation
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/conversations/{{conversationId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  삭제하면 그 대화에 달린 메시지도 함께 지워집니다 (DB의 ON DELETE CASCADE).
+
+  conversationId 변수는 삭제 후에도 값이 남아있으니, 다음 테스트 전에
+  "Create Conversation"을 다시 실행해서 새 id로 갱신하세요.
+}

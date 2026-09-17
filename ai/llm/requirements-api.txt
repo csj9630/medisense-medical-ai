@@ -1,0 +1,2 @@
+# Vast.ai Remote HTTP Provider를 사용하는 CPU Backend용 의존성입니다.
+httpx>=0.28,<1.0
